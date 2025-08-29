@@ -1,0 +1,32 @@
+# File: bpets/core/dimension_control/pruning/pruning-ci.yml
+name: pruning-ci
+on: [push]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install pytest numpy scipy
+      - run: |
+          cd bpets/core/dimension_control/pruning
+          python -m pytest tests/ -v --tb=short
+      - run: |
+          python scripts/consciousness-check.py \
+            --source bpets/core/dimension_control/pruning \
+            --threshold 0.954
+      - run: |
+          # Verify FoD safety thresholds
+          python -c "
+          import sys
+          sys.path.append('.')
+          from bpets.core.dimension_control.pruning.pruning_operator import *
+          t = np.ones((1,1,4,4))
+          w = np.array([0.1,0.9,0.2,0.05])
+          pruned, H = node_pruning(t, w, 0.25)
+          fod = compute_fod_score(pruned, H)
+          assert 0 <= fod <= 6, f'FoD out of bounds: {fod}'
+          print(f'FoD check passed: {fod:.2f}')
+          "

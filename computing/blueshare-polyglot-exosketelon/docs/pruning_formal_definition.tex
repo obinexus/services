@@ -1,0 +1,44 @@
+% Dimension-Control Pruning Operator for BPETS
+% File: bpets/core/dimension_control/pruning/formal_definition.tex
+
+\section{4D Tensor Pruning Operator}
+
+\subsection{Node Pruning Operator}
+Let $\mathcal{T} \in \mathbb{R}^{T \times S \times F \times C}$ be a 4D tensor where:
+\begin{itemize}
+    \item $T$: time dimension
+    \item $S$: sample dimension  
+    \item $F$: feature dimension
+    \item $C$: channel dimension
+\end{itemize}
+
+Define weight tensor $\mathbf{W} \in \mathbb{R}^{F}$ and threshold $\tau \in \mathbb{R}_{\geq 0}$.
+
+The node pruning operator $\mathcal{P}_\tau^{(n)}$ is:
+$$\mathcal{P}_\tau^{(n)}(\mathcal{T})_{t,s,f,c} = \begin{cases}
+    \mathcal{T}_{t,s,f,c} & \text{if } w_f \geq \tau \\
+    0 & \text{otherwise}
+\end{cases}$$
+
+\subsection{Cluster-Preserving Edge Pruning}
+For adjacency matrix $\mathbf{A} \in \mathbb{R}^{F \times F}$ with cluster assignment $\mathbf{C}: F \rightarrow \{1,2,...,k\}$:
+
+$$\mathcal{P}_\tau^{(e)}(\mathbf{A})_{i,j} = \begin{cases}
+    \mathbf{A}_{i,j} & \text{if } w_{i,j} \geq \tau \text{ or } C(i) = C(j) \\
+    0 & \text{otherwise}
+\end{cases}$$
+
+\subsection{Hamiltonian Energy Constraint}
+The normalized Hamiltonian energy:
+$$H_{\text{norm}} = \min\left(1, \frac{\sum_{f} w_f}{H_{\text{crit}}}\right)$$
+
+\subsection{Freedom of Dexterity Score}
+The effective rank after pruning:
+$$\text{rank}_{\text{eff}} = \text{rank}(\mathcal{P}_\tau(\mathcal{T}))$$
+
+FoD score with energy penalty:
+$$\text{FoD}_{\text{score}} = \text{clip}\left(6 \cdot \frac{\text{rank}_{\text{eff}}}{6} \cdot (1 - H_{\text{norm}}), 0, 6\right)$$
+
+\subsection{Hamiltonian Cycle Preservation}
+For undirected bidirectional graph preservation, ensure:
+$$\forall v \in V': \deg(v) \geq 2 \text{ (necessary for Hamiltonian cycle)}$$

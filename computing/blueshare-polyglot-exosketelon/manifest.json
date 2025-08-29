@@ -1,0 +1,18 @@
+{
+  "id": "pruning_control",
+  "semverx": "0.1.0+poly.python.0.1.0",
+  "tau": 0.3,
+  "cluster_preserving": true,
+  "H_crit": 1.0,
+  "safety_thresholds": {
+    "fod_emergency": 1.2,
+    "fod_assisted": 3.0,
+    "fod_normal": 4.0
+  },
+  "model_sha256": "a3c4f5e8b92d6f1e3a9c7b2d8e4f6a1b3c5d7e9f0a2b4c6d8e0f2a4b6c8d0e2f4",
+  "confidence": 0.97,
+  "graph_constraints": {
+    "preserve_hamiltonian_cycles": true,
+    "min_node_degree": 2
+  }
+}
