@@ -1,0 +1,168 @@
+<svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1200" height="800" fill="#f8f9fa"/>
+  
+  <!-- Title -->
+  <text x="600" y="40" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold">
+    OBINexus Water Cascade: 3D Voxel Grid Architecture
+  </text>
+  <text x="600" y="65" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#666">
+    Baked-Bean Can PoC → Distributed Water/Energy System
+  </text>
+  
+  <!-- Legend -->
+  <g id="legend" transform="translate(50, 100)">
+    <text x="0" y="-10" font-family="Arial, sans-serif" font-size="14" font-weight="bold">6-State Voxel Legend:</text>
+    <rect x="0" y="0" width="30" height="20" fill="cyan" stroke="#000" stroke-width="1"/>
+    <text x="40" y="15" font-family="Arial, sans-serif" font-size="12">S = SOURCE (Rain catchment)</text>
+    
+    <rect x="0" y="30" width="30" height="20" fill="#0066ff" stroke="#000" stroke-width="1"/>
+    <text x="40" y="45" font-family="Arial, sans-serif" font-size="12">T = TANK (Storage can)</text>
+    
+    <rect x="0" y="60" width="30" height="20" fill="red" stroke="#000" stroke-width="1"/>
+    <text x="40" y="75" font-family="Arial, sans-serif" font-size="12">O = ORIFICE (Flow control)</text>
+    
+    <rect x="0" y="90" width="30" height="20" fill="orange" stroke="#000" stroke-width="1"/>
+    <text x="40" y="105" font-family="Arial, sans-serif" font-size="12">P = SPLITTER (Multi-outlet)</text>
+    
+    <rect x="0" y="120" width="30" height="20" fill="black" stroke="#000" stroke-width="1"/>
+    <text x="40" y="135" font-family="Arial, sans-serif" font-size="12">K = SINK (Infiltration)</text>
+    
+    <rect x="0" y="150" width="30" height="20" fill="#999" stroke="#000" stroke-width="1"/>
+    <text x="40" y="165" font-family="Arial, sans-serif" font-size="12">V = VOID (Air/walkway)</text>
+  </g>
+  
+  <!-- 3D Isometric View -->
+  <g id="cascade" transform="translate(400, 200)">
+    <!-- Z=2: SOURCE level -->
+    <g id="z2-source">
+      <!-- Source container -->
+      <path d="M 100 100 L 200 50 L 300 100 L 200 150 Z" fill="cyan" stroke="#000" stroke-width="2"/>
+      <path d="M 200 50 L 200 0 L 300 50 L 300 100 Z" fill="#00cccc" stroke="#000" stroke-width="2"/>
+      <path d="M 300 100 L 300 50 L 400 100 L 300 150 Z" fill="#00aaaa" stroke="#000" stroke-width="2"/>
+      <text x="250" y="90" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold">SOURCE</text>
+      <text x="250" y="110" text-anchor="middle" font-family="Arial, sans-serif" font-size="12">20L jerrycan</text>
+    </g>
+    
+    <!-- Z=1: TANK level -->
+    <g id="z1-tank" transform="translate(0, 150)">
+      <!-- Tank -->
+      <path d="M 100 100 L 200 50 L 300 100 L 200 150 Z" fill="#0066ff" stroke="#000" stroke-width="2"/>
+      <path d="M 200 50 L 200 0 L 300 50 L 300 100 Z" fill="#0055dd" stroke="#000" stroke-width="2"/>
+      <path d="M 300 100 L 300 50 L 400 100 L 300 150 Z" fill="#0044bb" stroke="#000" stroke-width="2"/>
+      <text x="250" y="90" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold">TANK</text>
+      <text x="250" y="110" text-anchor="middle" font-family="Arial, sans-serif" font-size="12">5kg oil tin</text>
+    </g>
+    
+    <!-- Z=0: SPLITTER level -->
+    <g id="z0-splitter" transform="translate(0, 300)">
+      <!-- Splitter -->
+      <path d="M 100 100 L 200 50 L 300 100 L 200 150 Z" fill="orange" stroke="#000" stroke-width="2"/>
+      <path d="M 200 50 L 200 0 L 300 50 L 300 100 Z" fill="#ff9900" stroke="#000" stroke-width="2"/>
+      <path d="M 300 100 L 300 50 L 400 100 L 300 150 Z" fill="#dd8800" stroke="#000" stroke-width="2"/>
+      <text x="250" y="90" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold">SPLITTER</text>
+      <text x="250" y="110" text-anchor="middle" font-family="Arial, sans-serif" font-size="12">3-way IV drip</text>
+    </g>
+    
+    <!-- ORIFICES connecting levels -->
+    <g id="orifices">
+      <!-- O1: Source to Tank -->
+      <circle cx="250" cy="175" r="8" fill="red" stroke="#000" stroke-width="2"/>
+      <text x="270" y="180" font-family="Arial, sans-serif" font-size="10">O1: d=2mm</text>
+      
+      <!-- O2: Tank to Splitter -->
+      <circle cx="250" cy="325" r="8" fill="red" stroke="#000" stroke-width="2"/>
+      <text x="270" y="330" font-family="Arial, sans-serif" font-size="10">O2: d=3mm</text>
+    </g>
+    
+    <!-- Flow arrows -->
+    <defs>
+      <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+        <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+      </marker>
+    </defs>
+    
+    <path d="M 250 130 L 250 167" stroke="#333" stroke-width="3" marker-end="url(#arrowhead)"/>
+    <path d="M 250 280 L 250 317" stroke="#333" stroke-width="3" marker-end="url(#arrowhead)"/>
+    
+    <!-- Split flow from splitter -->
+    <path d="M 250 430 L 200 480" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+    <path d="M 250 430 L 300 480" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+  </g>
+  
+  <!-- OBINexus Toolchain Mapping -->
+  <g id="toolchain" transform="translate(850, 200)">
+    <text x="0" y="0" font-family="Arial, sans-serif" font-size="16" font-weight="bold">OBINexus Toolchain Mapping:</text>
+    
+    <rect x="-10" y="20" width="140" height="40" fill="#e8f4f8" stroke="#0066ff" stroke-width="2" rx="5"/>
+    <text x="60" y="45" text-anchor="middle" font-family="monospace" font-size="12">riftlang.exe</text>
+    <text x="60" y="55" text-anchor="middle" font-family="Arial, sans-serif" font-size="10">(SOURCE logic)</text>
+    
+    <path d="M 60 60 L 60 90" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+    
+    <rect x="-10" y="95" width="140" height="40" fill="#e8f4f8" stroke="#0066ff" stroke-width="2" rx="5"/>
+    <text x="60" y="120" text-anchor="middle" font-family="monospace" font-size="12">.so.a</text>
+    <text x="60" y="130" text-anchor="middle" font-family="Arial, sans-serif" font-size="10">(TANK state)</text>
+    
+    <path d="M 60 135 L 60 165" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+    
+    <rect x="-10" y="170" width="140" height="40" fill="#e8f4f8" stroke="#0066ff" stroke-width="2" rx="5"/>
+    <text x="60" y="195" text-anchor="middle" font-family="monospace" font-size="12">rift.exe</text>
+    <text x="60" y="205" text-anchor="middle" font-family="Arial, sans-serif" font-size="10">(FLOW control)</text>
+    
+    <path d="M 60 210 L 60 240" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+    
+    <rect x="-10" y="245" width="140" height="40" fill="#e8f4f8" stroke="#0066ff" stroke-width="2" rx="5"/>
+    <text x="60" y="270" text-anchor="middle" font-family="monospace" font-size="12">gosilang</text>
+    <text x="60" y="280" text-anchor="middle" font-family="Arial, sans-serif" font-size="10">(SINK deploy)</text>
+  </g>
+  
+  <!-- Flow Equations -->
+  <g id="equations" transform="translate(50, 450)">
+    <text x="0" y="0" font-family="Arial, sans-serif" font-size="14" font-weight="bold">Core Flow Equation (Torricelli):</text>
+    <text x="0" y="25" font-family="Arial, sans-serif" font-size="12">Q = 0.6 × π × (d/2)² × √(2gh) × 60000 L/min</text>
+    <text x="0" y="45" font-family="Arial, sans-serif" font-size="10">Where: d = hole diameter (m), h = water height (m), g = 9.81 m/s²</text>
+  </g>
+  
+  <!-- Compliance Checkpoints -->
+  <g id="compliance" transform="translate(50, 550)">
+    <text x="0" y="0" font-family="Arial, sans-serif" font-size="14" font-weight="bold">#NoGhosting Compliance Checkpoints:</text>
+    
+    <g transform="translate(0, 25)">
+      <circle cx="10" cy="0" r="5" fill="#00cc00"/>
+      <text x="25" y="5" font-family="Arial, sans-serif" font-size="12">✓ Transparent flow visibility (water levels always visible)</text>
+    </g>
+    
+    <g transform="translate(0, 50)">
+      <circle cx="10" cy="0" r="5" fill="#00cc00"/>
+      <text x="25" y="5" font-family="Arial, sans-serif" font-size="12">✓ No hidden failures (overflow bypasses prevent silent backups)</text>
+    </g>
+    
+    <g transform="translate(0, 75)">
+      <circle cx="10" cy="0" r="5" fill="#00cc00"/>
+      <text x="25" y="5" font-family="Arial, sans-serif" font-size="12">✓ Fair distribution enforced by physics (Torricelli law)</text>
+    </g>
+    
+    <g transform="translate(0, 100)">
+      <circle cx="10" cy="0" r="5" fill="#00cc00"/>
+      <text x="25" y="5" font-family="Arial, sans-serif" font-size="12">✓ Milestone tracking (flow rate = investment milestones)</text>
+    </g>
+  </g>
+  
+  <!-- Annotations -->
+  <g id="annotations" transform="translate(650, 450)">
+    <text x="0" y="0" font-family="Arial, sans-serif" font-size="14" font-weight="bold">Node Capacities:</text>
+    <text x="0" y="25" font-family="Arial, sans-serif" font-size="12">• SOURCE: 20L (rain buffer)</text>
+    <text x="0" y="45" font-family="Arial, sans-serif" font-size="12">• TANK: 5L (working volume)</text>
+    <text x="0" y="65" font-family="Arial, sans-serif" font-size="12">• Max flow: 0.32 L/min @ 15cm head</text>
+    <text x="0" y="85" font-family="Arial, sans-serif" font-size="12">• Overflow bypass: 2× primary flow</text>
+  </g>
+  
+  <!-- Scale indicator -->
+  <g id="scale" transform="translate(1000, 700)">
+    <line x1="0" y1="0" x2="100" y2="0" stroke="#000" stroke-width="2"/>
+    <line x1="0" y1="-5" x2="0" y2="5" stroke="#000" stroke-width="2"/>
+    <line x1="100" y1="-5" x2="100" y2="5" stroke="#000" stroke-width="2"/>
+    <text x="50" y="20" text-anchor="middle" font-family="Arial, sans-serif" font-size="12">1 voxel = 1m × 1m × 0.5m</text>
+  </g>
+</svg>

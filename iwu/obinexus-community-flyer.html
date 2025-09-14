@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OBINexus: Where Water Meets Wisdom</title>
+    <style>
+        @media print {
+            body { margin: 0; }
+            .flyer { page-break-after: avoid; }
+        }
+        
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f0f4f8;
+            color: #2c3e50;
+        }
+        
+        .flyer {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .title {
+            font-size: 36px;
+            font-weight: bold;
+            color: #0066cc;
+            margin: 0;
+            letter-spacing: -1px;
+        }
+        
+        .subtitle {
+            font-size: 20px;
+            color: #666;
+            margin-top: 10px;
+            font-style: italic;
+        }
+        
+        .water-flow {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 40px 0;
+            padding: 20px;
+            background: linear-gradient(180deg, #e6f3ff 0%, #f0f8ff 100%);
+            border-radius: 10px;
+        }
+        
+        .flow-item {
+            text-align: center;
+            flex: 1;
+            padding: 15px;
+        }
+        
+        .flow-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 10px;
+            background: #0066cc;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 36px;
+            box-shadow: 0 4px 10px rgba(0,102,204,0.3);
+        }
+        
+        .flow-arrow {
+            font-size: 30px;
+            color: #0066cc;
+            margin: 0 10px;
+        }
+        
+        .no-ghosting {
+            background: #fff8e1;
+            border: 2px solid #ffc107;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+        
+        .no-ghosting h3 {
+            color: #f57c00;
+            margin: 0 0 15px 0;
+            font-size: 24px;
+        }
+        
+        .commitment-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        
+        .commitment-list li {
+            display: flex;
+            align-items: center;
+            font-size: 15px;
+        }
+        
+        .check {
+            color: #4caf50;
+            margin-right: 8px;
+            font-size: 20px;
+        }
+        
+        .parallel-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 30px 0;
+        }
+        
+        .parallel-box {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #0066cc;
+        }
+        
+        .parallel-box h4 {
+            margin: 0 0 10px 0;
+            color: #0066cc;
+        }
+        
+        .qr-section {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            background: #f0f4f8;
+            border-radius: 10px;
+        }
+        
+        .qr-placeholder {
+            width: 150px;
+            height: 150px;
+            background: #2c3e50;
+            margin: 15px auto;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .qr-pattern {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                repeating-linear-gradient(0deg, #fff 0, #fff 5px, transparent 5px, transparent 10px),
+                repeating-linear-gradient(90deg, #fff 0, #fff 5px, transparent 5px, transparent 10px);
+            opacity: 0.1;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .tagline {
+            font-size: 18px;
+            font-weight: bold;
+            color: #0066cc;
+            text-align: center;
+            margin: 20px 0;
+            padding: 15px;
+            background: #e6f3ff;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="flyer">
+        <div class="header">
+            <h1 class="title">OBINexus</h1>
+            <p class="subtitle">Where Water Meets Wisdom</p>
+        </div>
+        
+        <div class="water-flow">
+            <div class="flow-item">
+                <div class="flow-icon">💧</div>
+                <strong>Rain Collection</strong><br>
+                <small>Natural Resources</small>
+            </div>
+            <span class="flow-arrow">→</span>
+            <div class="flow-item">
+                <div class="flow-icon">🏺</div>
+                <strong>Fair Distribution</strong><br>
+                <small>Gravity-Fed Justice</small>
+            </div>
+            <span class="flow-arrow">→</span>
+            <div class="flow-item">
+                <div class="flow-icon">🌱</div>
+                <strong>Community Growth</strong><br>
+                <small>Sustainable Impact</small>
+            </div>
+        </div>
+        
+        <div class="tagline">
+            Just as water flows naturally from source to community,<br>
+            talent flows transparently through OBINexus
+        </div>
+        
+        <div class="parallel-section">
+            <div class="parallel-box">
+                <h4>🏺 Baked-Bean Can System</h4>
+                <ul style="margin: 0; padding-left: 20px;">
+                    <li>Gravity ensures fair flow</li>
+                    <li>No pumps, no power needed</li>
+                    <li>Visible water levels</li>
+                    <li>Natural overflow protection</li>
+                    <li>Community-maintained</li>
+                </ul>
+            </div>
+            <div class="parallel-box">
+                <h4>🤝 OBINexus Recruitment</h4>
+                <ul style="margin: 0; padding-left: 20px;">
+                    <li>Merit ensures fair opportunity</li>
+                    <li>No gatekeepers, no bias</li>
+                    <li>Transparent milestones</li>
+                    <li>Built-in safeguards</li>
+                    <li>Community-verified</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="no-ghosting">
+            <h3>#NoGhosting Commitment</h3>
+            <ul class="commitment-list">
+                <li><span class="check">✓</span> Every application acknowledged</li>
+                <li><span class="check">✓</span> Clear timelines communicated</li>
+                <li><span class="check">✓</span> Progress always visible</li>
+                <li><span class="check">✓</span> Fair feedback guaranteed</li>
+                <li><span class="check">✓</span> No silent rejections</li>
+                <li><span class="check">✓</span> Community accountability</li>
+            </ul>
+        </div>
+        
+        <div class="qr-section">
+            <h3>Learn More About HACC Philosophy</h3>
+            <p>Scan to read "The History and Context of Computing"<br>
+            and Anti-Ghosting Manifesto on Medium</p>
+            <div class="qr-placeholder">
+                <div class="qr-pattern"></div>
+                <span>[QR CODE]</span>
+            </div>
+            <small>medium.com/@obinexus</small>
+        </div>
+        
+        <div class="footer">
+            <p><strong>Join the Flow:</strong> Where every drop counts, every talent matters</p>
+            <p>OBINexus - Building transparent systems since childhood • Est. 7 years old with baked-bean cans</p>
+        </div>
+    </div>
+</body>
+</html>
